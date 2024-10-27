@@ -10,6 +10,7 @@ import Speakers from '@/components/Speaker'
 import Themes from '@/components/Themes'
 import AnimatedSection from '@/components/AnimatedSection';
 import BecomeASpeaker from './../components/BecomeASpeaker';
+import { WavyBackgroundDemo } from '../components/LandingPage';
 
 export default function Home() {
   return (
@@ -21,11 +22,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div id="home">
+        {/* <div id="home">
           <AnimatedSection delay={0} className={styles.landingSection}>
             <h1>GenAI Summit</h1>
             <p>GenAI for Everyone</p>
           </AnimatedSection>
+        </div> */}
+        <div id="home">
+          <WavyBackgroundDemo />
         </div>
 
         <div id="about">

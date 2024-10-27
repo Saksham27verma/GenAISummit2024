@@ -93,7 +93,7 @@ const Speakers = () => {
               <div
                 key={speaker.id}
                 className={`${styles.speakerCard} ${expandedCard === speaker.id ? styles.expanded : ''}`}
-                onMouseEnter={() => setExpandedCard(speaker.id)}
+
               >
                 <div className={styles.imageOverlay} />
                 <Image
@@ -130,3 +130,4 @@ const Speakers = () => {
 };
 
 export default Speakers;
+

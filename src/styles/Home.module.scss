@@ -1,33 +1,114 @@
+
+.wavyBackgroundContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .wavyContent {
+    width: 100%;
+    max-width: 56rem; // equivalent to max-w-4xl
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .contentWrapper {
+      position: absolute;
+      top: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      text-align: center;
+      gap: 0rem;
+
+      .upperSubtitle {
+        align-self: flex-start; // left-align
+        position: relative;
+        font-style: italic;
+        color: #FC4D4D;
+        font-size: 2.5rem;
+        top: 50px;
+      }
+
+      h1 {
+        color: black;
+        font-weight: 700;
+        font-size: 5.5rem; // text-2xl
+        font-family: "Poppins", sans-serif;
+         font-weight: 400;
+         font-style: normal;
+         justify-self: left;
+         
+
+        @media (min-width: 768px) {
+          font-size: 6.25rem; // text-4xl
+        }
+
+        @media (min-width: 1024px) {
+          font-size: 9.5rem; // text-7xl
+        }
+      }
+      .mainHeading2{
+         position: relative;
+         align-self: flex-start;
+         top: -100px;
+      }
+      .mainHeading1{
+         position: relative;
+         align-self: flex-start;
+
+      }
+
+      .lowerSubtitle {
+        align-self: flex-end; // right-align
+        font-style: italic;
+        color: #FC4D4D;
+        position: relative;
+        top: -150px;
+        font-size: 2.5rem;
+
+      }
+    }
+  }
+}
+
 .container {
-   margin: 0;
-   padding: 0;
-   width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: rgb(255, 117, 39);
+  background: linear-gradient(90deg, rgba(255, 117, 39, 1) 0%, rgba(252, 77, 77, 1) 65%, rgba(255, 117, 39, 1) 100%);
 }
 
 .main {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 0;
 }
 
-.landingSection{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   padding: 40px;
-   gap: 40px;
+.landingSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
 
-   h1{
-      font-size: 120px;
-      font-weight: normal;
-   }
+  h1 {
+    font-size: 120px;
+    font-weight: normal;
+  }
 
-   p{
-      font-size: 30px;
-      font-weight: normal;
-   }
+  p {
+    font-size: 30px;
+    font-weight: normal;
+  }
 }

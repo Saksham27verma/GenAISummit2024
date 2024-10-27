@@ -1,65 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from '../styles/Themes.module.scss';
+import Marquee from '@/components/ui/marquee';
+import { cn } from "@/lib/utils";
 
-const themes = [
-  { name: 'Fin-Tech', color: '#FF7F50' },
-  { name: 'Health-Tech', color: '#FF7F50' },
-  { name: 'Ed-Tech', color: '#FF7F50' },
-  { name: 'AI-Tech', color: '#FF7F50' }
+const reviews = [
+  {
+    name: "Fin-Tech",
+    username: "Innovation",
+    body: "Transforming financial services through AI",
+  },
+  {
+    name: "Health-Tech",
+    username: "Healthcare",
+    body: "Revolutionizing patient care with AI",
+  },
+  {
+    name: "Ed-Tech",
+    username: "Education",
+    body: "Reshaping learning experiences",
+  },
+  {
+    name: "AI-Tech",
+    username: "Technology",
+    body: "Pushing the boundaries of innovation",
+  },
+  {
+    name: "DeepFake",
+    username: "Security",
+    body: "Understanding implications and safeguards",
+  },
+  {
+    name: "Ethical AI",
+    username: "Ethics",
+    body: "Responsible AI development",
+  },
 ];
 
-const scrollingThemes = [
-  'Building Foundations', 'DeepFake', 'Ethical AI', 'Impact on Industries',
-  'AI Tech Stack', 'Navigating AI Risks', 'Workforce Impact', 'GenAI in Products, Marketing & Customer Experience'
-];
+const ReviewCard = ({ name, username, body }) => {
+  return (
+    <figure className={styles.reviewCard}>
+      <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-col">
+          <figcaption className={styles.name}>{name}</figcaption>
+          <p className={styles.username}>{username}</p>
+        </div>
+      </div>
+      <blockquote className={styles.body}>{body}</blockquote>
+    </figure>
+  );
+};
 
 const Themes = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % themes.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
+  const firstRow = reviews.slice(0, 3);
+  const secondRow = reviews.slice(3);
 
   return (
-    <section className={styles.themes}>
-     {/* <div className={styles.scrollingStrip}>
-        <div className={styles.scrollContent}>
-          {[...scrollingThemes, ...scrollingThemes].map((theme, index) => (
-            <span key={index}>{theme}</span>
-          ))}
-        </div>
-      </div> */}
-      <div className={styles.content}>
-        <div className={styles.carouselContainer}>
-          <div className={styles.carousel}>
-            {themes.map((theme, index) => (
-              <div
-                key={index}
-                className={`${styles.card} ${index === activeIndex ? styles.active : ''} ${
-                  index === (activeIndex - 1 + themes.length) % themes.length ? styles.prev :
-                  index === (activeIndex + 1) % themes.length ? styles.next : ''
-                }`}
-                style={{ backgroundColor: index === activeIndex ? theme.color : '#D3D3D3' }}
-              >
-                {theme.name}
-              </div>
+    <section className={styles.section}>
+      <div className={styles.marqueeSection}>
+        <div className="w-full">
+          <Marquee className="[--duration:30s]" pauseOnHover repeat={2}>
+            {firstRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
             ))}
-          </div>
+          </Marquee>
+          
+          <Marquee className="[--duration:30s]" pauseOnHover reverse repeat={2}>
+            {secondRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
+            ))}
+          </Marquee>
         </div>
-        <div className={styles.description}>
-          <h2>Conference Themes</h2>
-          <p>
-            Generative AI is more than a technology. It&apos;s the engine driving the future
-            of innovation. From automating complex processes to creating entirely new
-            forms of content, GenAI is unlocking possibilities that were once the realm
-            of science fiction. This summit is your gateway to understanding how GenAI
-            is not just adapting to the world but actively shaping it, from business
-            strategies to everyday experiences.
-          </p>
-        </div>
+        <div className={styles.gradientLeft}></div>
+        <div className={styles.gradientRight}></div>
+      </div>
+      
+      <div className={styles.description}>
+        <h2>Conference Themes</h2>
+        <p>
+          Generative AI is more than a technology. It&apos;s the engine driving the future
+          of innovation. From automating complex processes to creating entirely new
+          forms of content, GenAI is unlocking possibilities that were once the realm
+          of science fiction. This summit is your gateway to understanding how GenAI
+          is not just adapting to the world but actively shaping it, from business
+          strategies to everyday experiences.
+        </p>
       </div>
     </section>
   );
