@@ -83,12 +83,17 @@ const Navbar = () => {
           <a href="#committee" onClick={handleNavClick('committee')}>
             Committee
           </a>
-        </li>
+       </li>
         <li onClick={() => setIsOpen(false)}>
           <a href="#highlights" onClick={handleNavClick('highlightsSection')}>
             Highlights
           </a>
         </li>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/spotlight" className={styles.navLink}>
+            Glimpses
+          </Link>
+        </li> 
         <li onClick={() => setIsOpen(false)}>
           <a href="#contact" onClick={handleNavClick('contact')}>
             Contact Us

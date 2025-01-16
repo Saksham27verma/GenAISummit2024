@@ -1,0 +1,21 @@
+.spotlight {
+  // ...existing code...
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin-top: 5rem; // Add spacing from header
+}
+
+.imageContainer {
+  width: 100%;
+  line-height: 0;
+  
+  img {
+    width: 100%;
+    display: block;
+  }
+}
