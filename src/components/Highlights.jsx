@@ -13,13 +13,22 @@ const Highlights = () => {
       </Head>
 
       <div className={styles.main}>
-        <Image
-          src="/highlights.png"
-          alt="GenAI Summit Highlights"
-          width={1920}
-          height={1080}
-          className={styles.highlightImage}
-        />
+        <div className={styles.imageContainer}>
+          <Image
+            src="/highlights1.png"
+            alt="GenAI Summit Highlights 1"
+            width={1920}
+            height={1080}
+            className={styles.highlightImage}
+          />
+          <Image
+            src="/highlights2.png"
+            alt="GenAI Summit Highlights 2"
+            width={1920}
+            height={1080}
+            className={styles.highlightImage}
+          />
+        </div>
       </div>
     </div>
   );

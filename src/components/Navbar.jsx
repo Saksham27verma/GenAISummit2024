@@ -9,24 +9,39 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHome, setIsHome] = useState(true);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navbarHeight = 80; // Adjust based on your navbar height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handleNavClick = (sectionId) => (e) => {
+  const handleNavClick = (sectionId) => async (e) => {
     e.preventDefault();
     setIsOpen(false);
-    scrollToSection(sectionId);
+
+    if (router.pathname !== '/') {
+      // If not on home page, navigate to home first
+      await router.push('/');
+      // Wait for DOM to update
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // If already on home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -75,30 +90,31 @@ const Navbar = () => {
 
       <ul className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
         <li onClick={() => setIsOpen(false)}>
-          <a href="#themes" onClick={handleNavClick('themes')}>
+          <a href="/#themes" onClick={handleNavClick('themes')}>
             Themes
           </a>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <a href="#committee" onClick={handleNavClick('committee')}>
+          <a href="/#committee" onClick={handleNavClick('committee')}>
             Committee
           </a>
        </li>
         <li onClick={() => setIsOpen(false)}>
-          <a href="#highlights" onClick={handleNavClick('highlightsSection')}>
+          <a href="/#highlights" onClick={handleNavClick('highlightsSection')}>
             Highlights
           </a>
         </li>
-        <li onClick={() => setIsOpen(false)}>
-          <Link href="/spotlight" className={styles.navLink}>
-            Glimpses
-          </Link>
-        </li> 
         <li onClick={() => setIsOpen(false)}>
           <a href="#contact" onClick={handleNavClick('contact')}>
             Contact Us
           </a>
         </li>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/spotlight">
+            <button className={styles.sponsorBtn}>Glimpses</button>
+          </Link>
+        </li> 
+        
         <li onClick={() => setIsOpen(false)}>
           <Link href="/become-a-speaker-sponsor">
             <button className={styles.sponsorBtn}>Become a Sponsor</button>
